@@ -1,24 +1,15 @@
-import { startStandaloneServer } from '@apollo/server/standalone'
 import mongoose from "mongoose";
 import { typeDefs } from "./graphql/schema.js";
 import { resolvers } from "./graphql/resolvers.js";
-
+import 'dotenv/config';
 import { ApolloServer } from 'apollo-server';
-
-
-
-const mongoURI = "mongodb+srv://lukecontrivida:kFIfyCaq5ATRsu6J@cluster0.rxzbckj.mongodb.net/contactQRGenerator"
 
 const server = new ApolloServer({
     typeDefs, 
     resolvers
 })
 
-// const { url } = await startStandaloneServer(server, {
-//     listen: { port: 4000 }
-// })
-
-mongoose.connect(mongoURI, {useNewUrlParser: true}).then(() => {
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true}).then(() => {
     console.log("Connected to MongoDB")
     return server.listen({port: 4000})
 }).then((res) => {

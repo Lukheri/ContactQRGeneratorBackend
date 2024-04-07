@@ -16,7 +16,7 @@ export const resolvers = {
             console.log(res._doc)
             
             return {
-                id: res.id,
+                id: res._id,
                 ...res._doc
             }
         }

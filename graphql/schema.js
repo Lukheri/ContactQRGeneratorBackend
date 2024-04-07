@@ -2,6 +2,7 @@ import { gql } from "apollo-server"
 
 export const typeDefs = gql`
     type User {
+        id: ID!
         firstName: String!
         lastName: String!
         birthdate: String!
@@ -10,7 +11,6 @@ export const typeDefs = gql`
         email: String!
         contactNumber: String!
         password: String!
-        createdAt: String
     }
 
     input UserInput {
